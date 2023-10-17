@@ -1,0 +1,247 @@
+{% extends './base.html' %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% block content %}
+    <main class="container d-flex justify-content-center">
+    <!--    form starts-->
+   <section class="col-6 d-flex justify-content-center">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center" id="myTabContent">
+          <div class="d-flex m-4">
+            <h3 class="mx-auto">House Price Predictor</h3>
+          </div>
+            <form
+              method="POST"
+              action="{% url 'predictor:predict_price' %}"
+              onsubmit="return validateConfirmPassword()"
+              class="needs-validation"
+              novalidate
+            >
+              {% csrf_token %}
+              <div class="register-form">
+                <div class="d-flex flex-column justify-content-center">
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Quality</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="overall_qual"
+                          placeholder="1-10 *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Area (sq.ft)</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="grliv_area"
+                          placeholder="Area in square feet *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Cars</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="garage_cars"
+                          placeholder="number of cars in garage *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Basement</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="total_bsmt_sf"
+                          placeholder="Basement area in square feet *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">1st Floor</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="first_flr_sf"
+                          placeholder="square Footage of 1st floor *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Bathrooms</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="full_bath"
+                          placeholder="number of bathrooms *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Bedrooms</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="tot_rms_abv_grd"
+                          placeholder="number of bedrooms *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text bg-warning" id="basic-addon1">Year Built</span>
+                        </div>
+                        <input
+                          required
+                          type="text"
+                          class="form-control"
+                          name="year_built"
+                          placeholder=" year of construction *"
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a number.
+                        </div>
+                        <div class="valid-feedback">Looks good!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="">
+                      <input
+                        class="btn btn-outline-primary col-md-4 p-2 mb-3"
+                        type="submit"
+                        value="Predict"
+                      />
+                      <input
+                        onclick=""
+                        class="btn btn-outline-secondary col-md-4 p-2 mb-3"
+                        type="reset"
+                        value="Cancel"
+                      />
+                    </div>
+                  </div>
+            </form>
+        </div>
+      </div>
+    </div>
+   </section>
+   <section class="col-6 d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <h3>Predicted Result</h3>
+        {% if predicted_price is not None %}
+            <p>Predicted Price: Rs:{{ predicted_price }}</p>
+        {% else %}
+            <p>No prediction available.</p>
+        {% endif %}
+    </div>
+  </section>
+  {% endblock %}
+</main>
+  </body>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      "use strict";
+  
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll(".needs-validation");
+  
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+  
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</html>
