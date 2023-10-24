@@ -18,7 +18,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def predict_price(request):
-    model = joblib.load("C:\\Users\\hp\\PycharmProjects\\House_price_predictor\\home\\predictor\\model.pkl")  # Load your saved model
+    model = joblib.load("/home/ubuntu/House_Price_prediction/House_price_predictor/home/predictor/model.pkl")  # Load your saved model
     predicted_price = None
 
     if request.method == 'POST':
